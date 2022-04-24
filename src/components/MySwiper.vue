@@ -23,8 +23,6 @@
 <script>
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import 'swiper/dist/css/swiper.css'
-import { APPCODE } from './config'
-import axios from 'axios'
 export default {
   components: {
     swiper,
@@ -73,9 +71,6 @@ export default {
       }
     }
   },
-  created () {
-    this.getSwiperMap()
-  },
   // mounted () {
   //  api.swiperMap({
   //    headers: {
@@ -95,14 +90,6 @@ export default {
     clickHandle (index) {
       this.currentIndex = index
       this.swiper.slideTo(index, 1000, false)
-    },
-    async getSwiperMap () {
-      const { data: res } = await axios.get('http://ncovdata.market.alicloudapi.com/ncov/cityDiseaseInfoWithTrend', {
-        headers: {
-          Authorization: `APPCODE ${APPCODE}`
-        }
-      })
-      console.log(res)
     }
   }
 }
